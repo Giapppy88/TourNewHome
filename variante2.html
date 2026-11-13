@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Unità C — Variante 2 — tour 3D</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #cfe4f2; font-family: "Segoe UI", system-ui, sans-serif; }
+  canvas { display: block; width: 100vw; height: 100vh; cursor: grab; touch-action: none; }
+  #label { position: fixed; top: 18px; left: 20px; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.55); pointer-events: none; }
+  #room { font-size: 26px; font-weight: 600; letter-spacing: .2px; }
+  #sub { font-size: 14px; opacity: .92; margin-top: 2px; }
+  #chips { position: fixed; top: 18px; right: 16px; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+  #chips button, #bar button { font: inherit; font-size: 13px; border: 0; border-radius: 16px; padding: 6px 12px; cursor: pointer;
+    background: rgba(255,255,255,.82); color: #2a2a2a; backdrop-filter: blur(6px); }
+  #chips button.on { background: #2a2a2a; color: #fff; }
+  #chips button:hover, #bar button:hover { background: #fff; color: #000; }
+  #bar { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); width: min(720px, 92vw); display: flex; gap: 10px; align-items: center;
+    background: rgba(30,30,30,.55); padding: 8px 12px; border-radius: 24px; backdrop-filter: blur(8px); }
+  #bar button { min-width: 88px; }
+  #seek { flex: 1; accent-color: #fff; }
+  #time { color: #fff; font-size: 12px; min-width: 78px; text-align: right; font-variant-numeric: tabular-nums; }
+  #hint { position: fixed; left: 50%; bottom: 70px; transform: translateX(-50%); color: #fff; font-size: 13px;
+    background: rgba(30,30,30,.55); padding: 5px 12px; border-radius: 14px; opacity: 0; transition: opacity .3s; pointer-events: none; }
+  #hint.show { opacity: 1; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="label"><div id="room"></div><div id="sub"></div></div>
+<div id="chips"></div>
+<div id="hint">In pausa — trascina per guardarti intorno</div>
+<div id="bar">
+  <button id="play">Pausa</button>
+  <button id="restart">Ricomincia</button>
+  <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Posizione nel tour">
+  <span id="time"></span>
+</div>
+<script type="module" src="./variante2.js"></script>
+</body>
+</html>
